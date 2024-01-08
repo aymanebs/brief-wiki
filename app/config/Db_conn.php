@@ -1,7 +1,7 @@
 <?php
 
 namespace app\config;
-require_once './vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 use PDO;
 use PDOException;
 
@@ -11,11 +11,13 @@ class Db_conn{
 
     private function __construct()
     {
-        $db_host=$_ENV['DB_HOST'];
-        $db_user=$_ENV['DB_USER'];
-        $db_password=$_ENV['DB_PASSWORD'];
-        $db_name=$_ENV['DB_NAME'];
+        $db_host='localhost';
+        $db_user='root';
+        $db_password='';
+        $db_name='wiki';
 
+        
+        
         try{
             $dsn="mysql:host=" . $db_host .";dbname=" . $db_name;
             self::$connection=new PDO($dsn,$db_user,$db_password);
@@ -25,7 +27,7 @@ class Db_conn{
         }
     }
 
-    public static function getConnection(){
+    public static function getConnection(): PDO{
         if(!self::$connection){
             new self();
         }
@@ -34,3 +36,4 @@ class Db_conn{
     }
 
 }
+

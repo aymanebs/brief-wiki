@@ -30,7 +30,9 @@ CREATE TABLE wikis(
     submissionDate DATETIME,
     status BOOLEAN,
     category_id INT,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
+    user_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 
 );
 
