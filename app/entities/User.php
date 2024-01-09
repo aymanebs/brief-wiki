@@ -11,6 +11,8 @@ class User{
     private $password;
     private $role_id;
 
+     // Constructor
+
     public function __construct($name,$email,$password,$role_id)
     {
         
@@ -19,6 +21,8 @@ class User{
       $this->password=$password;
       $this->role_id=$role_id;
     }
+
+    // get methods
 
     public function getId(){
         return $this->id;
@@ -39,6 +43,8 @@ class User{
     public function getRoleId(){
         return $this->role_id;
     }
+
+    // set methods
 
     public function setId($id){
          $this->id=$id;

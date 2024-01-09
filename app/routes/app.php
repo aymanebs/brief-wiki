@@ -10,11 +10,13 @@ $router = new Router();
 $router->setRoutes([
     'GET' => [
         "register" => ["UserController", "viewRegister"],
+        "catinsert" => ["CategoryController", "viewInsert"]
          
     ],
 
     'POST' => [
         'register'=>['UserController' , 'register'],
+        'insert'=>['CategoryController' , 'insert']
       
 
     ]

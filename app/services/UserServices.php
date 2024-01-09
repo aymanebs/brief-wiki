@@ -1,13 +1,13 @@
 <?php
 
 namespace app\services;
-
+require_once '../../vendor/autoload.php';
 use app\config\Db_conn;
 use app\dao\UserDao;
 use PDO;
 use PDOException;
 
-require_once '../../vendor/autoload.php';
+
 
 class UserServices implements UserDao{
 

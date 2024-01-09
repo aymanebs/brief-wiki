@@ -37,12 +37,15 @@ class UserController{
     }
 
     public function login(){
+        
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sign'])){
+           
             $email=htmlspecialchars($_POST['email']);
             $password=htmlspecialchars($_POST['password']);
 
             $userServices = new UserServices();
             $user = $userServices->getUserByEmail($email);
+
             if($user){
                 if(password_verify($password, $user['password'])){
                     $_SESSION['user_id'] = $user['id'];
@@ -64,10 +67,10 @@ class UserController{
 
     }
 
-
-
-
 }
+    }
+
+
 
 
 

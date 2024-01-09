@@ -1,0 +1,18 @@
+<?php
+
+namespace app\dao;
+require_once '../../vendor/autoload.php';
+
+
+Use app\entities\Wiki;
+
+interface WikiDao{
+
+    public function create(Wiki $wiki);
+    public function update(Wiki $wiki);
+    public function delete(Wiki $wiki);
+    public function getWikiById($id);
+    public function getAllWikis();
+   
+
+}
