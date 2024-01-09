@@ -16,13 +16,12 @@ class Wiki{
 
     // Constructor
     
-    public function __construct($title,$content,$imagePath,$submissionDate,$status,$category_id,$user_id)
+    public function __construct($title,$content,$imagePath,$status,$category_id,$user_id)
     {
         
       $this->title=$title;
       $this->content=$content;
       $this->imagePath=$imagePath;
-      $this->submissionDate=$submissionDate;
       $this->status=$status;
       $this->category_id=$category_id;
       $this->user_id=$user_id;

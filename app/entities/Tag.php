@@ -11,11 +11,11 @@ class Tag{
 
      // Constructor
 
-     public function __construct($title,$submissionDate)
+     public function __construct($title)
      {
          
        $this->title=$title;
-       $this->submissionDate=$submissionDate;
+  
        
      }
 

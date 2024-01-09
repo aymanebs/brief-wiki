@@ -3,13 +3,13 @@
 namespace app\services;
 
 use app\config\Db_conn;
-use app\dao\CategoryDao;
-use app\entities\Category;
+use app\dao\TagDao;
+use app\entities\Tag;
 use PDO;
 
 require_once '../../vendor/autoload.php';
 
-class CategoryServices implements CategoryDao{
+class TagServices implements TagDao{
 
     private $database;
 
@@ -18,31 +18,31 @@ class CategoryServices implements CategoryDao{
         $this->database=Db_conn ::getConnection();
     }
 
-    public function create(Category $category)
+    public function create(Tag $tag)
     {
-        $sql="INSERT INTO categories(title) VALUE(:title)";
+        $sql="INSERT INTO tags(title) VALUE(:title)";
         $stmt=$this->database->prepare($sql);
         
-        $title= $category->getTitle();
+        $title= $tag->getTitle();
 
         $stmt->bindParam(':title',$title,PDO::PARAM_STR);
         $stmt->execute();
 
     }
 
-    public function update(Category $category){
+    public function update(Tag $tag){
         echo"";
     }
 
-    public function delete(Category $category){
+    public function delete(Tag $tag){
         echo"";
     }
 
-    public function getCategoryById($id){
+    public function getTagById($id){
         echo"";
     }
 
-    public function getAllCategories(){
+    public function getAllTags(){
         echo"";
     }
 

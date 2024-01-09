@@ -2,13 +2,13 @@
 
 namespace app\controllers;
 require_once '../../vendor/autoload.php';
-use app\entities\Category;
-use app\services\CategoryServices;
+use app\entities\Tag;
+use app\services\TagServices;
 
 
 
 
-class CategoryController{
+class TagController{
 
     public function insert(){
 
@@ -16,10 +16,10 @@ class CategoryController{
 
             $title=$_POST['title'];
 
-            $category= new Category($title);
-            $categoryServices = new CategoryServices();
+            $tag= new tag($title);
+            $tagServices = new TagServices();
 
-            $categoryServices->create($category);
+            $tagServices->create($tag);
 
         }
 
@@ -28,7 +28,7 @@ class CategoryController{
 
     public function viewInsert()
     {
-        require_once  "../../views/catinsert.php";
+        require_once  "../../views/taginsert.php";
     }
 
 }

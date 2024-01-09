@@ -20,14 +20,13 @@ class WikiServices implements WikiDao{
 
     public function create($wiki){
 
-        $sql="INSERT INTO wikis(title,content,imagePath,submissionDate,status,category_id,user_id) Values(:title,:content,:imagePath,:submissionDate,:status,:category_id,:user_id)";
+        $sql="INSERT INTO wikis(title,content,imagePath,status,category_id,user_id) Values(:title,:content,:imagePath,:status,:category_id,:user_id)";
         
         $stmt=$this->database->prepare($sql);
 
         $title=$wiki->getTitle();
         $content=$wiki->getContent();
         $imagePath=$wiki->getImagePath();
-        $submissionDate=$wiki->getSubmissionDate();
         $status=$wiki->getStatus();
         $category_id=$wiki->getCategory_id();
         $user_id=$wiki->getUser_id();
@@ -35,7 +34,6 @@ class WikiServices implements WikiDao{
         $stmt->bindParam(':title',$title,PDO::PARAM_STR);
         $stmt->bindParam(':content',$content,PDO::PARAM_STR);
         $stmt->bindParam(':imagePath',$imagePath,PDO::PARAM_STR);
-        $stmt->bindParam(':submissionDate',$submissionDate,PDO::PARAM_STR);
         $stmt->bindParam(':status',$status,PDO::PARAM_BOOL);
         $stmt->bindParam(':category_id',$category_id,PDO::PARAM_INT);
         $stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
@@ -44,5 +42,25 @@ class WikiServices implements WikiDao{
     }
 
 
+    public function update( $wiki){
+        
+    }
+    public function delete( $wiki){
+        echo"";
+    }
+    public function getWikiById($id){
+        echo"";
+    }
+
+    public function getAllWikis(){
+        $sql ="SELECT * FROM  wikis";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+
+        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $wiki;
+
+
+    }
 
 }

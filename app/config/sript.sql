@@ -19,7 +19,7 @@ CREATE TABLE users(
 CREATE TABLE categories(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title varchar(255),
-    submissionDate DATETIME
+    submissionDate DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE wikis(
@@ -27,7 +27,7 @@ CREATE TABLE wikis(
     title varchar(255),
     content TEXT,
     imagePath varchar(255),
-    submissionDate DATETIME,
+    submissionDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     status BOOLEAN,
     category_id INT,
     user_id INT,
@@ -39,7 +39,7 @@ CREATE TABLE wikis(
 CREATE TABLE tags(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title varchar(255),
-    submissionDate DATETIME
+    submissionDate DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE wiki_tag(

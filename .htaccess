@@ -1,3 +1,4 @@
 RewriteEngine On
 DirectoryIndex app/routes/app.php
 RewriteRule ^(.*)$ app/routes/app.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ /brief-wiki/app/routes/App.php?url=$1 [QSA,L]

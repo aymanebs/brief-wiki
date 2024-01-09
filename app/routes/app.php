@@ -10,13 +10,18 @@ $router = new Router();
 $router->setRoutes([
     'GET' => [
         "register" => ["UserController", "viewRegister"],
-        "catinsert" => ["CategoryController", "viewInsert"]
+        "catinsert" => ["CategoryController", "viewInsert"],
+        "taginsert" => ["TagController", "viewInsert"],
+        "wikinsert" => ["WikiController", "viewInsert"],
+        "wikilist" => ["WikiController", "viewlist"]
          
     ],
 
     'POST' => [
         'register'=>['UserController' , 'register'],
-        'insert'=>['CategoryController' , 'insert']
+        'insert'=>['CategoryController' , 'insert'],
+        'insert'=>['TagController' , 'insert'],
+        'insert'=>['WikiController' , 'insert'],
       
 
     ]
