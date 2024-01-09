@@ -19,7 +19,8 @@ $wikis = $wikiService->getAllWikis();
 foreach ($wikis as $wiki) { ?>
     <div class="container mt-4">
     <div class="card" style="width: 18rem;">
-        <img src="brief-wiki/public/upload/pic-3.png" class="card-img-top" alt="Image Alt Text">
+    <h1>waaa</h1>
+        <img src="/brief-wiki/app/routes/../../public/upload/pic-3.png" class="card-img-top" alt="Image Alt Text">
         <div class="card-body">
             <h5 class="card-title"><?php echo $wiki['title'] ?></h5>
             <p class="card-text"><?php echo $wiki['content'] ?></p>
@@ -32,7 +33,7 @@ foreach ($wikis as $wiki) { ?>
  <?php }
  ?>
 
-<img src="/brief-wiki/public/upload/pic-3.png"  alt="Image Alt Text">
+<img src="/brief-wiki/public/uploads/pic-3.png"  alt="Image Alt Text">
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

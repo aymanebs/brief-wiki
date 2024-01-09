@@ -31,4 +31,14 @@ class CategoryController{
         require_once  "../../views/catinsert.php";
     }
 
+
+    public function delete(){
+        if (isset($_GET['id'])){
+            $id=$_GET['id'];
+            $categoryService=new CategoryServices();
+            $categoryService->delete($id);
+            header('location: dashboard');
+        }
+    }
+
 }

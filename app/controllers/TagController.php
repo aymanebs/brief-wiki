@@ -31,4 +31,14 @@ class TagController{
         require_once  "../../views/taginsert.php";
     }
 
+
+    public function delete(){
+        if (isset($_GET['id'])){
+            $id=$_GET['id'];
+            $tagService=new TagServices();
+            $tagService->delete($id);
+            header('location: dashboard');
+        }
+    }
+
 }

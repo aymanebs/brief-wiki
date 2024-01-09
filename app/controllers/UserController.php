@@ -23,10 +23,10 @@ class UserController{
             
             $userServices = new UserServices();
             $test=$userServices->create($user);
-            var_dump($test);
+           
             
         
-            // header('location:../../views/authentification/register.php?welcome');
+            
             
         }
     }
@@ -34,6 +34,11 @@ class UserController{
     public function viewRegister()
     {
         require_once  "../../views/authentification/register.php";
+    }
+
+    public function viewLogin()
+    {
+        require_once  "../../views/authentification/login.php";
     }
 
     public function login(){
@@ -62,11 +67,17 @@ class UserController{
                     }
                 }
             }
-
-
-
     }
 
+}
+
+public function delete(){
+    if (isset($_GET['id'])){
+        $id=$_GET['id'];
+        $userService=new UserServices();
+        $userService->delete($id);
+        header('location: dashboard');
+    }
 }
     }
 

@@ -10,7 +10,7 @@ interface WikiDao{
 
     public function create(Wiki $wiki);
     public function update(Wiki $wiki);
-    public function delete(Wiki $wiki);
+    public function delete($id);
     public function getWikiById($id);
     public function getAllWikis();
    

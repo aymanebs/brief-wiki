@@ -10,7 +10,7 @@ interface TagDao{
 
     public function create(Tag $tag);
     public function update(Tag $tag);
-    public function delete(Tag $tag);
+    public function delete($id);
     public function getTagById($id);
     public function getAllTags();
    

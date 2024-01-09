@@ -34,8 +34,12 @@ class CategoryServices implements CategoryDao{
         echo"";
     }
 
-    public function delete(Category $category){
-        echo"";
+    public function delete( $id){
+        $sql="DELETE FROM categories WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
     public function getCategoryById($id){

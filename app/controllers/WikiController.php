@@ -21,7 +21,7 @@ class WikiController{
             $imagePath=$_FILES['image']['name'];
             $temp_name=$_FILES['image']['tmp_name'];
     
-            move_uploaded_file($temp_name,"../../public/upload/$imagePath");
+            move_uploaded_file($temp_name,"../../public/uploads/$imagePath");
 
             $wiki= new Wiki($title,$content,$imagePath,$status,$category_id,$user_id);
             $wikiServices = new WikiServices();
@@ -38,9 +38,18 @@ class WikiController{
         require_once  "../../views/wikinsert.php";
     }
 
-    public function viewlist()
+    public function viewList()
     {
         require_once  "../../views/wikilist.php";
+    }
+
+    public function delete(){
+        if (isset($_GET['id'])){
+            $id=$_GET['id'];
+            $wikiService=new WikiServices();
+            $wikiService->delete($id);
+            header('location: dashboard');
+        }
     }
 
 

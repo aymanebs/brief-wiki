@@ -34,8 +34,12 @@ class TagServices implements TagDao{
         echo"";
     }
 
-    public function delete(Tag $tag){
-        echo"";
+    public function delete( $id){
+        $sql="DELETE FROM tags WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
     public function getTagById($id){

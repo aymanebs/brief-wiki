@@ -9,11 +9,16 @@ $router = new Router();
 
 $router->setRoutes([
     'GET' => [
+
         "register" => ["UserController", "viewRegister"],
+        "login" => ["UserController", "viewLogin"],
         "catinsert" => ["CategoryController", "viewInsert"],
         "taginsert" => ["TagController", "viewInsert"],
         "wikinsert" => ["WikiController", "viewInsert"],
-        "wikilist" => ["WikiController", "viewlist"]
+        "wikilist" => ["WikiController", "viewList"],
+        "dashboard" => ["HomeController", "viewDashboard"],
+        'delete'=>['WikiController' , 'delete']
+        
          
     ],
 

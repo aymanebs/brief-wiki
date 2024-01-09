@@ -45,9 +45,15 @@ class WikiServices implements WikiDao{
     public function update( $wiki){
         
     }
-    public function delete( $wiki){
-        echo"";
+    
+    public function delete( $id){
+        $sql="DELETE FROM wikis WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
     }
+
     public function getWikiById($id){
         echo"";
     }
@@ -59,8 +65,8 @@ class WikiServices implements WikiDao{
 
         $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
         return $wiki;
-
-
     }
+
+
 
 }

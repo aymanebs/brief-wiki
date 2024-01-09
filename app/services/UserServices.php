@@ -56,8 +56,12 @@ class UserServices implements UserDao{
         echo'cc';
     }
 
-    public function delete($user){
-        echo'cc';
+    public function delete( $id){
+        $sql="DELETE FROM users WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
     public function getUserById($id)
