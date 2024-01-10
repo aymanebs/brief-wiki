@@ -47,7 +47,12 @@ class CategoryServices implements CategoryDao{
     }
 
     public function getAllCategories(){
-        echo"";
+        $sql ="SELECT * FROM  categories";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+
+        $category=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $category;
     }
 
 

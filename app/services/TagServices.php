@@ -47,7 +47,12 @@ class TagServices implements TagDao{
     }
 
     public function getAllTags(){
-        echo"";
+        $sql ="SELECT * FROM  tags";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+
+        $tag=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $tag;
     }
 
 

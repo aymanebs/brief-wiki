@@ -15,7 +15,7 @@ $router->setRoutes([
         "catinsert" => ["CategoryController", "viewInsert"],
         "taginsert" => ["TagController", "viewInsert"],
         "wikinsert" => ["WikiController", "viewInsert"],
-        "wikilist" => ["WikiController", "viewList"],
+        "index" => ["WikiController", "viewList"],
         "dashboard" => ["HomeController", "viewDashboard"],
         'delete'=>['WikiController' , 'delete']
         

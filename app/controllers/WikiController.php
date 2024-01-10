@@ -20,8 +20,12 @@ class WikiController{
 
             $imagePath=$_FILES['image']['name'];
             $temp_name=$_FILES['image']['tmp_name'];
+            $uploadDirectory = "../../public/upload/";
+            $destination = $uploadDirectory . basename($imagePath);
+            move_uploaded_file($temp_name, $destination);
     
-            move_uploaded_file($temp_name,"../../public/uploads/$imagePath");
+            
+            
 
             $wiki= new Wiki($title,$content,$imagePath,$status,$category_id,$user_id);
             $wikiServices = new WikiServices();
@@ -35,12 +39,12 @@ class WikiController{
 
     public function viewInsert()
     {
-        require_once  "../../views/wikinsert.php";
+        require_once  "../../views/user/wikinsert.php";
     }
 
     public function viewList()
     {
-        require_once  "../../views/wikilist.php";
+        require_once  "../../index.php";
     }
 
     public function delete(){
