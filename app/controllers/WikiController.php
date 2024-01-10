@@ -14,9 +14,10 @@ class WikiController{
 
             $title=$_POST['title'];
             $content=$_POST['content'];
-            $status=$_POST['status'];
+            $status=0;
             $category_id=$_POST['category_id'];
-            $user_id=$_POST['user_id'];
+            $user_id=17;
+            $tagId=$_POST['tag_id'];
 
             $imagePath=$_FILES['image']['name'];
             $temp_name=$_FILES['image']['tmp_name'];
@@ -30,7 +31,7 @@ class WikiController{
             $wiki= new Wiki($title,$content,$imagePath,$status,$category_id,$user_id);
             $wikiServices = new WikiServices();
 
-            $wikiServices->create($wiki);
+            $wikiServices->create($wiki,$tagId);
 
         }
 
@@ -56,5 +57,9 @@ class WikiController{
         }
     }
 
+    public function viewDetails()
+    {
+        require_once  "../../views/user/wikidetails.php";
+    }
 
 }    

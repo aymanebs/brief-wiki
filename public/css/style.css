@@ -46,6 +46,7 @@ html{
 
 body{
    background-color: var(--light-bg);
+   font-size: larger;
 }
 
 section{
@@ -1046,6 +1047,15 @@ section{
       grid-template-columns: 1fr;
    }
 
- 
+ section .details p{
+    font-size: large;
+
+ }
+
+ .wiki_image{
+    position: relative;
+    float: right;
+    margin-right: 20px;
+ }
 
 }

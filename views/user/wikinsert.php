@@ -21,10 +21,10 @@
 
    <nav class="navbar nav-1">
       <section class="flex">
-         <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+      <a href="" class="logo"><i class="fa fa-wikipedia-w"></i>Wiki</a>
 
          <ul>
-            <li><a href="#">post property<i class="fas fa-paper-plane"></i></a></li>
+            <li><a href="#">Add wiki<i class="fas fa-paper-plane"></i></a></li>
          </ul>
       </section>
    </nav>
@@ -46,7 +46,7 @@
                </li>
                <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
                   <ul>
-                     <li><a href="#">post property</a></li>
+                     <li><a href="#">Add wiki</a></li>
                      <li><a href="#">dashboard</a></li>
                   </ul>
                </li>
@@ -89,13 +89,13 @@
 
    <div class="row">
    
-      <form action="" method="post">
+      <form action="insert" method="post" enctype="multipart/form-data">
          <h3>Add your contribution</h3>
-         <label >Title</label>
+         <label style="font-size: 1.5em;">Title</label>
          <input type="text" name="title"  placeholder="Title" class="box">
 
-         <label >Select category</label>
-         <select name="category" class="box">
+         <label style="font-size: 1.5em;">Select category</label>
+         <select name="category_id" class="box">
          <?php
 
         use app\services\CategoryServices;
@@ -106,19 +106,16 @@
          $categoryservice = new CategoryServices();
          $categories=$categoryservice->getAllCategories();
          foreach($categories as $category){ ?>
-              
-        
-         <option value=""><?php echo $category['title']?></option>
+         <option  value="<?php echo $category['id']?>"><?php echo $category['title']?></option>
+
+       
          
-        
-
-
         <?php
          }
          ?>
          </select> 
-         <label class="label" >Select tag</label>
-         <select name="tag" class="box">
+         <label  style="font-size: 1.5em;">Select tag</label>
+         <select name="tag_id" class="box">
          <?php
 
          require '../../vendor/autoload.php';
@@ -127,16 +124,16 @@
          $tags=$tagservice->getAllTags();
          foreach($tags as $tag){ ?>
   
-         <option value=""><?php echo $tag['title']?></option>
+         <option value="<?php echo $tag['id']?>"><?php echo $tag['title']?></option>
         <?php
          }
          ?>
          </select> 
-         <label >Content</label>
+         <label style="font-size: 1.5em;">Content</label>
          <textarea name="content" placeholder="Wiki content"  cols="30" rows="10" class="box"></textarea>
-         <label >Insert image</label>
+         <label style="font-size: 1.5em;">Insert image</label>
          <input  name="image" type="file" accept="image/png, image/gif, image/jpeg" class="box">
-         <input type="submit" value="submit wiki" name="send" class="btn">
+         <input type="submit" name="insert" class="btn">
          
       </form>
    </div>

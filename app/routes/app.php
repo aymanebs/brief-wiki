@@ -17,7 +17,8 @@ $router->setRoutes([
         "wikinsert" => ["WikiController", "viewInsert"],
         "index" => ["WikiController", "viewList"],
         "dashboard" => ["HomeController", "viewDashboard"],
-        'delete'=>['WikiController' , 'delete']
+        'delete'=>['WikiController' , 'delete'],
+        "wikidetails" => ["WikiController", "viewDetails"],
         
          
     ],

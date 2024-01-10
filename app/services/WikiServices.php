@@ -18,7 +18,7 @@ class WikiServices implements WikiDao{
     }
 
 
-    public function create($wiki){
+    public function create($wiki,$tagId){
 
         $sql="INSERT INTO wikis(title,content,imagePath,status,category_id,user_id) Values(:title,:content,:imagePath,:status,:category_id,:user_id)";
         
@@ -27,7 +27,7 @@ class WikiServices implements WikiDao{
         $title=$wiki->getTitle();
         $content=$wiki->getContent();
         $imagePath=$wiki->getImagePath();
-        $status=$wiki->getStatus();
+        $status=false;
         $category_id=$wiki->getCategory_id();
         $user_id=$wiki->getUser_id();
 
@@ -39,6 +39,17 @@ class WikiServices implements WikiDao{
         $stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
 
         $stmt->execute();
+
+        $lasInsertId =$this->database->lastInsertId();
+
+        $sql="INSERT INTO wiki_tag(wiki_id,tag_id) VALUES(:wiki_id,:tag_id)";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':wiki_id',$lasInsertId,PDO::PARAM_INT);
+        $stmt->bindParam(':tag_id',$tagId,PDO::PARAM_INT);
+        $stmt->execute();
+
+
+
     }
 
 
@@ -55,11 +66,17 @@ class WikiServices implements WikiDao{
     }
 
     public function getWikiById($id){
-        echo"";
+        $sql ="SELECT * FROM  wikis WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $wiki;
     }
 
     public function getAllWikis(){
-        $sql ="SELECT * FROM  wikis";
+        $sql ="SELECT * FROM  wikis WHERE status=1";
         $stmt=$this->database->prepare($sql);
         $stmt->execute();
 

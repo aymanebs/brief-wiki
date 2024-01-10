@@ -8,7 +8,7 @@
 
    <!-- font awesome cdn link  -->
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> -->
-
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
    <!-- custom css file link  -->
    <link rel="stylesheet" href="/brief-wiki/app/routes/../../public/css/style.css" />
 
@@ -86,53 +86,51 @@
 
 <!-- header section ends -->
 
-<!-- listings section starts  -->
 
-<section class="listings">
-
-   <h1 class="heading">All wikis</h1>
-
-   <div class="box-container">
-
-    <!-- wiki card -->
+<!-- article section starts  -->
+<section class="details">
 
 
-    <?php
+<?php
 
-   require '../../vendor/autoload.php';
-   use app\services\WikiServices;
+use app\services\WikiServices;
 
-
-
-   $wikiService = new WikiServices();
-   $wikis = $wikiService->getAllWikis();
+if (isset($_GET['id'])){
+   $id=$_GET['id'];
+   $wikiService=new WikiServices();
+   $wikis=$wikiService->getWikiById($id);
    foreach ($wikis as $wiki) { ?>
+   <!-- Article Title -->
+<h1 style="padding: 20px;"><?php echo $wiki['title']?></h1>
 
-      <div class="box">
-         <div class="admin">
-            <div>
-               <span> Created: <?php echo $wiki['submissionDate'] ?></span>
-            </div>
-         </div>
-         <div class="thumb">
-         
-            <img src="/brief-wiki/app/routes/../../public/upload/<?php echo $wiki['imagePath'] ?>"  alt="Image Alt Text">
-         </div>
-         <h3 class="name"><?php echo $wiki['title'] ?></h3> 
-         <a href="wikidetails?id=<?php echo $wiki['id']; ?>" class="btn">Read more</a>
-      </div>
-    
+      <!-- Article Image -->
+<img src="/brief-wiki/app/routes/../../public/upload/<?php echo $wiki['imagePath'] ?>" class="wiki_image" alt="Article Image">
 
-      <?php } ?>
+      <!-- Article Content -->
+<div  style="padding-top: 20px;">
+    <p></p>
 
+    <p style="text-align: justify; margin-bottom: 20px; font-size: 16px;"><?php echo $wiki['content']?></p>
+</div>
+
+</div>
+
+<!-- article section ends  -->
 
 
 
-   </div>
+   <?PHP }
+   
+
+}
+
+?>
 
 </section>
 
-<!-- listings section ends -->
+
+<!-- article section ends  -->
+
 
 
 
@@ -145,20 +143,23 @@
       <div class="box">
          <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
          <a href="tel:1112223333"><i class="fas fa-phone"></i><span>1112223333</span></a>
-         
+         <a href=""><i class="fas fa-envelope"></i><span>shaikhanas@gmail.com</span></a>
+         <a href="#"><i class="fas fa-map-marker-alt"></i><span>mumbai, india - 400104</span></a>
       </div>
 
       <div class="box">
          <a href="home.html"><span>home</span></a>
          <a href="about.html"><span>about</span></a>
-        
+         <a href="contact.html"><span>contact</span></a>
+         <a href="listings.html"><span>all listings</span></a>
         
       </div>
 
       <div class="box">
          <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
          <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
-        
+         <a href="#"><span>linkedin</span><i class="fab fa-linkedin"></i></a>
+         <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
 
       </div>
 
@@ -170,7 +171,7 @@
 
 <!-- footer section ends -->
 
-
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 <!-- custom js file link  -->
 <script src="https://kit.fontawesome.com/b93ca603ed.js" crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
