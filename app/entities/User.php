@@ -13,13 +13,13 @@ class User{
 
      // Constructor
 
-    public function __construct($name,$email,$password,$role_id)
+    public function __construct($name,$email,$password)
     {
         
       $this->name=$name;
       $this->email=$email;
       $this->password=$password;
-      $this->role_id=$role_id;
+     
     }
 
     // get methods

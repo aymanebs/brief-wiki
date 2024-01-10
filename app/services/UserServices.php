@@ -39,10 +39,10 @@ class UserServices implements UserDao{
 
     public function getUserByEmail($email)
     {
-        $stmt=$this->database->prepare("SELECT * FROM properties WHERE email=:email");
+        $stmt=$this->database->prepare("SELECT * FROM users WHERE email=:email");
         $stmt->bindParam(':email',$email,PDO::PARAM_STR);
         $stmt->execute();
-        $row=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        $row=$stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($row) {
             return $row; 

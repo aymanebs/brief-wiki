@@ -26,6 +26,17 @@ class TagController{
 
     }
 
+
+    public function listTag(){
+        $tagservice = new TagServices();
+        $tags=$tagservice->getAllTags();
+
+        
+        require_once  "../../views/user/wikinsert.php";
+
+    }
+    
+
     public function viewInsert()
     {
         require_once  "../../views/taginsert.php";

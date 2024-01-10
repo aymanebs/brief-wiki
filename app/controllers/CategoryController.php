@@ -26,6 +26,8 @@ class CategoryController{
 
     }
 
+ 
+
     public function viewInsert()
     {
         require_once  "../../views/catinsert.php";

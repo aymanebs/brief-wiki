@@ -93,12 +93,9 @@
 
 <?php
 
-use app\services\WikiServices;
 
-if (isset($_GET['id'])){
-   $id=$_GET['id'];
-   $wikiService=new WikiServices();
-   $wikis=$wikiService->getWikiById($id);
+
+
    foreach ($wikis as $wiki) { ?>
    <!-- Article Title -->
 <h1 style="padding: 20px;"><?php echo $wiki['title']?></h1>
@@ -122,7 +119,7 @@ if (isset($_GET['id'])){
    <?PHP }
    
 
-}
+
 
 ?>
 

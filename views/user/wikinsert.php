@@ -97,19 +97,8 @@
          <label style="font-size: 1.5em;">Select category</label>
          <select name="category_id" class="box">
          <?php
-
-        use app\services\CategoryServices;
-        use app\services\TagServices;
-
-         require '../../vendor/autoload.php';
-
-         $categoryservice = new CategoryServices();
-         $categories=$categoryservice->getAllCategories();
          foreach($categories as $category){ ?>
          <option  value="<?php echo $category['id']?>"><?php echo $category['title']?></option>
-
-       
-         
         <?php
          }
          ?>
@@ -118,10 +107,7 @@
          <select name="tag_id" class="box">
          <?php
 
-         require '../../vendor/autoload.php';
-
-         $tagservice = new TagServices();
-         $tags=$tagservice->getAllTags();
+      
          foreach($tags as $tag){ ?>
   
          <option value="<?php echo $tag['id']?>"><?php echo $tag['title']?></option>

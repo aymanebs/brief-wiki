@@ -12,19 +12,27 @@ $router->setRoutes([
 
         "register" => ["UserController", "viewRegister"],
         "login" => ["UserController", "viewLogin"],
+        'logout'=>['UserController' , 'logout'],
         "catinsert" => ["CategoryController", "viewInsert"],
         "taginsert" => ["TagController", "viewInsert"],
         "wikinsert" => ["WikiController", "viewInsert"],
         "index" => ["WikiController", "viewList"],
         "dashboard" => ["HomeController", "viewDashboard"],
         'delete'=>['WikiController' , 'delete'],
-        "wikidetails" => ["WikiController", "viewDetails"],
+        
+        "wikidetails" => ["WikiController", "listwiki"],
+
+        "wikinsert" => ["WikiController", "selectList"],
+        
+        
+        
         
          
     ],
 
     'POST' => [
         'register'=>['UserController' , 'register'],
+        "login" => ["UserController", "login"],
         'insert'=>['CategoryController' , 'insert'],
         'insert'=>['TagController' , 'insert'],
         'insert'=>['WikiController' , 'insert'],

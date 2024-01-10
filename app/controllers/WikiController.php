@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\entities\Wiki;
 use app\services\WikiServices;
+use app\services\CategoryServices;
+use app\services\TagServices;
 
 require_once '../../vendor/autoload.php';
 
@@ -38,6 +40,17 @@ class WikiController{
 
     }
 
+    public function selectList(){
+        
+        $categoryservice = new CategoryServices();
+        $categories=$categoryservice->getAllCategories();
+        $tagservice = new TagServices();
+        $tags=$tagservice->getAllTags();
+        require_once  "../../views/user/wikinsert.php";
+
+    }
+ 
+
     public function viewInsert()
     {
         require_once  "../../views/user/wikinsert.php";
@@ -57,9 +70,17 @@ class WikiController{
         }
     }
 
-    public function viewDetails()
-    {
-        require_once  "../../views/user/wikidetails.php";
-    }
+    // public function viewDetails()
+    // {
+    //     require_once  "../../views/user/wikidetails.php";
+    // }
 
+    public function listwiki(){
+        if (isset($_GET['id'])){
+            $id=$_GET['id'];
+            $wikiService=new WikiServices();
+            $wikis=$wikiService->getWikiById($id);
+            require_once "../../views/user/wikidetails.php";
+    }
+}
 }    
