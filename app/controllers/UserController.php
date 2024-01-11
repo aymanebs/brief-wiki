@@ -101,7 +101,7 @@ class UserController
             $id = $_GET['id'];
             $userService = new UserServices();
             $userService->delete($id);
-            header('location: dashboard');
+            header('location: dashboard-users');
         }
     }
 
@@ -115,5 +115,18 @@ class UserController
         require_once '../../views/admin/dashboard-users.php';
 
      }
+
+     public function editRole(){
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+            $id=$_POST['id'];
+            $userService=new UserServices();
+            $userService->updateRole($id,$_POST["role"]);
+            header("Location: dashboard-users");
+            exit;
+        }
+
+
+    }
 
 }

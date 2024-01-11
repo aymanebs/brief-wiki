@@ -142,11 +142,15 @@ class WikiController{
         $wikiService = new WikiServices();
         $wikis = $wikiService->getAllWikis();
         require_once '../../views/admin/dashboard.php';
-       
-
-
     }
 
+    // public function countWikis(){
+    //     $wikiService = new WikiServices();
+    //     $count =$wikiService->count();
+    //     require_once '../../views/admin/dashboard.php';
+
+
+    // }
 
 
 

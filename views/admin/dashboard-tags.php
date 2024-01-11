@@ -19,7 +19,7 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">wiki</div>
             <div class="list-group list-group-flush my-3">
                 <a href="dashboard" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                        class="fas fa-tachometer-alt me-2"></i>Wikis</a>
 
                 <a href="dashboard-users" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-user me-2"></i>Users</a>
@@ -29,8 +29,11 @@
 
                 <a href="dashboard-tags" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tag me-2"></i>Tags</a>
+
+                        <a href="statistics" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                class="fas fa-chart-bar me-2"></i>Statistics</a>
                         
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                <a href="logout" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -50,7 +53,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle  fw-bold" href="#" id="navbarDropdown"
@@ -60,11 +63,11 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="logout">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </nav>
 
             <div class="container-fluid px-4">
@@ -72,41 +75,41 @@
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">720</h3>
-                                <p class="fs-5">Products</p>
+                                <h3 class="fs-2"></h3>
+                                <p class="fs-5">Wikis</p>
                             </div>
-                            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">4920</h3>
-                                <p class="fs-5">Sales</p>
+                                <h3 class="fs-2"></h3>
+                                <p class="fs-5">Users</p>
                             </div>
                             <i
-                                class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                                class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">3899</h3>
-                                <p class="fs-5">Delivery</p>
+                                <h3 class="fs-2"></h3>
+                                <p class="fs-5">Categories</p>
                             </div>
-                            <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-layer-group fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">%25</h3>
-                                <p class="fs-5">Increase</p>
+                                <h3 class="fs-2"></h3>
+                                <p class="fs-5">Tags</p>
                             </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-tag fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
                 </div>
@@ -137,9 +140,9 @@
                                     <td><?php echo $tag['submissionDate'] ?></td>
                                     
                                     <td>
-                                    <a href="#editTagModal<?php echo $tag['id']; ?>" class="editTag" data-id="<?php echo $category['id'] ?>" data-status="<?php echo $category['title']; ?>" data-toggle="modal">
+                                    <a href="#editTagModal<?php echo $tag['id']; ?>" class="editTag" data-id="<?php echo $tag['id'] ?>" data-status="<?php echo $tag['title']; ?>" data-toggle="modal">
                                     <i class='fas fa-edit btndit' style='cursor: pointer;'></i></a>
-            <a href='delete?id=<?php echo $tag['id']?>'><i class='fas fa-trash-alt btndelete' style='cursor: pointer; padding-left: 20px;'></i></a>
+            <a href='deleteTag?id=<?php echo $tag['id']?>'><i class='fas fa-trash-alt btndelete' style='cursor: pointer; padding-left: 20px;'></i></a>
             <!-- <a href="Delete?user_id=${row.id}" class="btn btn-danger">Delete</a> -->
         </td>
                                 </tr>
@@ -158,7 +161,45 @@
     </div>
 
     <!-- table ends -->
+
+        <!-- Bootstrap Modal -->
+<?php foreach ($tags as $tag) { ?>
+
+<div class="modal fade" id="editTagModal<?php echo $tag['id']?>" tabindex="-1" role="dialog" aria-labelledby="editTagModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="editTagModalLabel">Edit Tag Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <!-- Form for editing tag title -->
+            <form action="editTitle" method="POST">
+               <input type="hidden" name="id" value="<?php echo ($tag['id'])  ?>">
+               <div class="form-group">
+                  <label for="editTagTitle">Title:</label>
+
+                  <input type="text" name="title" id="editTagTitle" value="<?php echo $tag['title'] ?>">
+
+
+
+               </div>
+               <button type="submit" class="btn btn-primary mt-2">Save changes</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<?php  }
+                              ?>
+
+
+
     
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         var el = document.getElementById("wrapper");

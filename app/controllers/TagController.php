@@ -40,7 +40,7 @@ class TagController{
             $id=$_GET['id'];
             $tagService=new TagServices();
             $tagService->delete($id);
-            header('location: dashboard');
+            header('location: dashboard-tags');
         }
     }
 
@@ -53,4 +53,22 @@ class TagController{
         require_once '../../views/admin/dashboard-tags.php';
 
     }
+
+            // editing Tags
+
+    
+    
+            public function editTitle(){
+    
+                if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+                    $id=$_POST['id'];
+                    $tagService=new TagServices();
+                    $tagService->getTagById($id);
+                    $tagService->updateTitle($id,$_POST["title"]);
+                    header("Location: dashboard-tags");
+                    exit;
+                }
+        
+        
+            }
 }

@@ -14,6 +14,7 @@ interface CategoryDao{
     public function delete($id);
     public function getCategoryById($id);
     public function getAllCategories();
+    public function count();
    
 
 }

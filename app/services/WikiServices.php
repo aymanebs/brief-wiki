@@ -121,7 +121,14 @@ class WikiServices implements WikiDao{
         return $wiki;
     }
 
+        public function count(){
+        $sql ="SELECT count(id)  FROM wikis";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();;
+        return $count;
 
+        }
     // public function updateStatus($wiki){
     //     $sql="UPDATE wikis SET  status=:status  WHERE id=:id";
     //     $stmt=$this->database->prepare($sql);

@@ -15,6 +15,7 @@ interface WikiDao{
     public function getWikiById($id);
     public function getAllWikis();
     public function getDisplayWikis();
+    public function count();
 
    
 

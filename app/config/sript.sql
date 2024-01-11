@@ -47,7 +47,7 @@ CREATE TABLE wiki_tag(
     tag_id INT,
     PRIMARY KEY (wiki_id, tag_id),
     FOREIGN KEY (wiki_id) REFERENCES wikis(id),
-    FOREIGN KEY (tag_id) REFERENCES tags(id)
+    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE 
 
 
 );

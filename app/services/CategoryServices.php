@@ -73,4 +73,12 @@ class CategoryServices implements CategoryDao{
     }
 
 
+    public function count(){
+        $sql ="SELECT count(id)  FROM categories";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();;
+        return $count;
+
+        }
 }

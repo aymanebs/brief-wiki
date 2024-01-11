@@ -43,7 +43,13 @@ class TagServices implements TagDao{
     }
 
     public function getTagById($id){
-        echo"";
+        $sql ="SELECT * FROM  tags WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $tag=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $tag;
     }
 
     public function getAllTags(){
@@ -55,6 +61,23 @@ class TagServices implements TagDao{
         return $tag;
     }
 
+    public function updateTitle($id,$title){
 
+        $sql = "UPDATE tags SET title=:title WHERE id=:id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
+
+    public function count(){
+        $sql ="SELECT count(id)  FROM tags";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();;
+        return $count;
+
+        }
 
 }

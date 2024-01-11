@@ -79,7 +79,21 @@ class UserServices implements UserDao{
         return $wiki;
     }
     
+    public function updateRole($id,$role){
+        $sql = "UPDATE users SET role_id=:role_id WHERE id=:id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':role_id', $role, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 
+    public function count(){
+        $sql ="SELECT count(id)  FROM users";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();;
+        return $count;
 
+        }
 
 }

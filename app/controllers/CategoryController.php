@@ -42,7 +42,7 @@ class CategoryController{
             $id=$_GET['id'];
             $categoryService=new CategoryServices();
             $categoryService->delete($id);
-            header('location: dashboard');
+            header('location: dashboard-categories');
         }
     }
 
