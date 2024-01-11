@@ -10,6 +10,8 @@ use app\services\CategoryServices;
 
 class CategoryController{
 
+    // function to insert the categories
+
     public function insert(){
 
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insert'])){
@@ -26,13 +28,14 @@ class CategoryController{
 
     }
 
- 
+        // view category insert page
 
     public function viewInsert()
     {
         require_once  "../../views/catinsert.php";
     }
 
+        // delete categories
 
     public function delete(){
         if (isset($_GET['id'])){
@@ -42,5 +45,33 @@ class CategoryController{
             header('location: dashboard');
         }
     }
+
+       // list the categories
+
+       public function listCategories(){
+        
+        $categoryservice = new CategoryServices();
+        $categories=$categoryservice->getAllCategories();
+        require_once '../../views/admin/dashboard-categories.php';
+
+    }
+
+         // editing Categories
+
+    
+    
+        public function editTitle(){
+    
+            if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+                $id=$_POST['id'];
+                $categoryService=new CategoryServices();
+                $categoryService->getCategoryById($id);
+                $categoryService->updateTitle($id,$_POST["title"]);
+                header("Location: dashboard-categories");
+                exit;
+            }
+    
+    
+        }
 
 }

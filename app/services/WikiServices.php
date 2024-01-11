@@ -53,8 +53,36 @@ class WikiServices implements WikiDao{
     }
 
 
-    public function update( $wiki){
+    public function update($wiki){
+        $sql="UPDATE wikis SET title=:title, content=:content, imagePath=:imagePath, status=:status, category_id=:category_id WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+
+        $title=$wiki->getTitle();
+        $content=$wiki->getContent();
+        $imagePath=$wiki->getImagePath();
+        $status=false;
+        $category_id=$wiki->getCategory_id();
+        $id=$wiki->getId();
         
+
+        $stmt->bindParam(':title',$title,PDO::PARAM_STR);
+        $stmt->bindParam(':content',$content,PDO::PARAM_STR);
+        $stmt->bindParam(':imagePath',$imagePath,PDO::PARAM_STR);
+        $stmt->bindParam(':status',$status,PDO::PARAM_BOOL);
+        $stmt->bindParam(':category_id',$category_id,PDO::PARAM_INT);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+      
+        $stmt->execute();
+
+        
+    }
+
+    public function updateStatus($id, $status){
+        $sql = "UPDATE wikis SET status=:status WHERE id=:id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':status', $status, PDO::PARAM_BOOL);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
     
     public function delete( $id){
@@ -71,11 +99,20 @@ class WikiServices implements WikiDao{
         $stmt->bindParam(':id',$id,PDO::PARAM_INT);
         $stmt->execute();
 
-        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        $wiki=$stmt->fetch(PDO::FETCH_ASSOC);
         return $wiki;
     }
 
     public function getAllWikis(){
+        $sql ="SELECT * FROM  wikis";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+
+        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $wiki;
+    }
+
+    public function getDisplayWikis(){
         $sql ="SELECT * FROM  wikis WHERE status=1";
         $stmt=$this->database->prepare($sql);
         $stmt->execute();
@@ -85,5 +122,19 @@ class WikiServices implements WikiDao{
     }
 
 
+    // public function updateStatus($wiki){
+    //     $sql="UPDATE wikis SET  status=:status  WHERE id=:id";
+    //     $stmt=$this->database->prepare($sql);
+        
+    //     $id=$wiki->getId();
+    //     $status=$wiki->getStatus();
+        
+    //     $stmt->bindParam(':status',$status,PDO::PARAM_BOOL);
+    //     $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+      
+    //     $stmt->execute();
+
+
+    // }
 
 }

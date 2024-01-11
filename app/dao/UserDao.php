@@ -13,6 +13,7 @@ interface UserDao{
     public function delete($id);
     public function getUserById($id);
     public function getUserByEmail($email);
+    public function getAllUsers();
 
 
 }

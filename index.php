@@ -100,13 +100,7 @@
 
     <?php
 
-   require '../../vendor/autoload.php';
-   use app\services\WikiServices;
-
-
-
-   $wikiService = new WikiServices();
-   $wikis = $wikiService->getAllWikis();
+  
    foreach ($wikis as $wiki) { ?>
 
       <div class="box">

@@ -9,10 +9,13 @@ Use app\entities\Wiki;
 interface WikiDao{
 
     public function create(Wiki $wiki,$tagId);
-    public function update(Wiki $wiki);
+    public function update($wiki);
+    public function updateStatus($id, $status);
     public function delete($id);
     public function getWikiById($id);
     public function getAllWikis();
+    public function getDisplayWikis();
+
    
 
 }

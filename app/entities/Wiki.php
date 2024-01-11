@@ -16,9 +16,9 @@ class Wiki{
 
     // Constructor
     
-    public function __construct($title,$content,$imagePath,$status,$category_id,$user_id)
+    public function __construct($id,$title,$content,$imagePath,$status,$category_id,$user_id)
     {
-        
+      $this->id=$id;
       $this->title=$title;
       $this->content=$content;
       $this->imagePath=$imagePath;
@@ -62,7 +62,10 @@ class Wiki{
     }
 
     // set methods
-    
+    public function setId($id){
+        $this->id = $id;
+   }
+
     public function setTitle($title){
          $this->title = $title;
     }

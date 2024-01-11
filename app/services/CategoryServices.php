@@ -43,7 +43,13 @@ class CategoryServices implements CategoryDao{
     }
 
     public function getCategoryById($id){
-        echo"";
+        $sql ="SELECT * FROM  categories WHERE id=:id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $category=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $category;
     }
 
     public function getAllCategories(){
@@ -55,6 +61,16 @@ class CategoryServices implements CategoryDao{
         return $category;
     }
 
+
+    public function updateTitle($id,$title){
+
+        $sql = "UPDATE categories SET title=:title WHERE id=:id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
 
 
 }

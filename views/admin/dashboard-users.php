@@ -25,11 +25,11 @@
                         class="fas fa-user me-2"></i>Users</a>
 
                 <a href="dashboard-categories" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-layer-group me-2"></i>Categories</a>
+                class="fas fa-layer-group me-2"></i>Categories</a>
 
                 <a href="dashboard-tags" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                class="fas fa-tag me-2"></i>Tags</a>
-
+                        class="fas fa-tag me-2"></i>Tags</a>
+                        
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
@@ -114,7 +114,7 @@
                 <!-- table starts -->
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Wikis</h3>
+                    <h3 class="fs-4 mb-3">Users list </h3>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
@@ -122,35 +122,24 @@
 
                                 <tr>
                                     <th scope="col" width="50">id</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Submission Date</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                foreach ($wikis as $wiki) { ?>
+                                foreach ($users as $user) { ?>
 
                                 <tr>
-                                    <td scope="row"><?php echo $wiki['id'] ?></td>
-                                    <td><?php echo $wiki['title'] ?></td>
-                                    <td><?php echo $wiki['submissionDate'] ?></td>
-                                    <td>  <?php
-                                  
-                                     if ($wiki['status']) {
-                                    echo '<span style="color: green;">Published</span>';  
-                                     } else {
-                                      echo '<span style="color: red;">Draft</span>';  
-                                    }
-        ?></td>
+                                    <td scope="row"><?php echo $user['id'] ?></td>
+                                    <td><?php echo $user['name'] ?></td>
+                                    <td><?php echo $user['email'] ?></td>
+                                    <td><?php echo $user['role'] ?></td>
                                     <td>
-                                    
-                                    <a href="#editWikiModal<?php echo $wiki['id']; ?>" class="editWiki" data-id="<?php echo $wiki['id'] ?>" data-status="<?php echo $wiki['status']; ?>" data-toggle="modal">
-                                <i class='fas fa-edit btndit' style='cursor: pointer;'></i></a>
-                            </a>
-            
+            <a href='/./views/admin/users/edit.php?id=<?php echo $user['id']?>'><i class='fas fa-edit btndit' style='cursor: pointer;'></i></a>
             <a href='delete?id=<?php echo $wiki['id']?>'><i class='fas fa-trash-alt btndelete' style='cursor: pointer; padding-left: 20px;'></i></a>
             <!-- <a href="Delete?user_id=${row.id}" class="btn btn-danger">Delete</a> -->
         </td>
@@ -170,41 +159,7 @@
     </div>
 
     <!-- table ends -->
-
-<!-- Bootstrap Modal -->
-<?php foreach ($wikis as $wiki) { ?>
-
-<div class="modal fade" id="editWikiModal<?php echo $wiki['id']?>" tabindex="-1" role="dialog" aria-labelledby="editWikiModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="editWikiModalLabel">Edit Wiki Status</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <!-- Form for editing wiki status -->
-            <form action="editStatus" method="POST">
-               <input type="hidden" name="id" value="<?php echo ($wiki['id'])  ?>">
-               <div class="form-group">
-                  <label for="editWikiStatus">Status:</label>
-                  <select class="form-control" id="editWikiStatus" name="status">
-                     <option value="1" <?php echo $wiki['status'] ?>>Published</option>
-                     <option value="0" <?php echo ($wiki['status'])  ?>>Draft</option>
-                  </select>
-               </div>
-               <button type="submit" class="btn btn-primary mt-2">Save changes</button>
-            </form>
-         </div>
-      </div>
-   </div>
-</div>
-<?php  }
-                              ?>
     
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         var el = document.getElementById("wrapper");

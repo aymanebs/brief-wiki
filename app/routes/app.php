@@ -19,10 +19,25 @@ $router->setRoutes([
         "index" => ["WikiController", "viewList"],
         "dashboard" => ["HomeController", "viewDashboard"],
         'delete'=>['WikiController' , 'delete'],
+        'edit'=>['WikiController' , 'edit'],
+
+        'edit-wiki'=>['WikiController' , 'edit'],
+
+        // 'edit-wiki'=>['WikiController' , 'viewEdit'], /////
+        // 'edit-category'=>['CategoryController' , 'viewEdit'], /////
         
-        "wikidetails" => ["WikiController", "listwiki"],
+        
+        "wikidetails" => ["WikiController", "listDetails"],
 
         "wikinsert" => ["WikiController", "selectList"],
+        "wikidetails" => ["WikiController", "listDetails"],
+
+        "dashboard" => ["WikiController", "listWikis"],
+
+        "dashboard-users" =>['UserController' , "listUsers"],
+        "dashboard-categories" =>['CategoryController' , "listCategories"],
+        "dashboard-tags" =>['TagController' , "listTags"]
+        
         
         
         
@@ -36,7 +51,11 @@ $router->setRoutes([
         'insert'=>['CategoryController' , 'insert'],
         'insert'=>['TagController' , 'insert'],
         'insert'=>['WikiController' , 'insert'],
-      
+
+        'edit'=>['WikiController' , 'edit'],
+
+        "editStatus" => ["WikiController", "editStatus"], ///
+        "editTitle" => ["CategoryController", "editTitle"],
 
     ]
 ]);

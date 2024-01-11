@@ -11,6 +11,8 @@ require_once '../../vendor/autoload.php';
 
 class WikiController{
 
+    // function to add wikis
+
     public function insert(){
         if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['insert'])){
 
@@ -26,19 +28,13 @@ class WikiController{
             $uploadDirectory = "../../public/upload/";
             $destination = $uploadDirectory . basename($imagePath);
             move_uploaded_file($temp_name, $destination);
-    
-            
-            
-
-            $wiki= new Wiki($title,$content,$imagePath,$status,$category_id,$user_id);
+            $wiki= new Wiki(null,$title,$content,$imagePath,$status,$category_id,$user_id);
             $wikiServices = new WikiServices();
-
             $wikiServices->create($wiki,$tagId);
-
         }
-
-
     }
+
+    // Fetching categories and tags to display them in select list
 
     public function selectList(){
         
@@ -47,19 +43,25 @@ class WikiController{
         $tagservice = new TagServices();
         $tags=$tagservice->getAllTags();
         require_once  "../../views/user/wikinsert.php";
-
     }
  
+    // Wiki insert page view 
 
     public function viewInsert()
     {
         require_once  "../../views/user/wikinsert.php";
     }
 
+    // index page view
+
     public function viewList()
     {
+        $wikiService = new WikiServices();
+        $wikis = $wikiService->getDisplayWikis();
         require_once  "../../index.php";
     }
+
+    // deleting wikis
 
     public function delete(){
         if (isset($_GET['id'])){
@@ -70,12 +72,62 @@ class WikiController{
         }
     }
 
-    // public function viewDetails()
+
+    // public function viewEdit()
     // {
-    //     require_once  "../../views/user/wikidetails.php";
+       
+    //     if (isset($_GET['id'])){
+           
+    //         $id=$_GET['id'];
+    //         $wikiService=new WikiServices();
+    //         $wiki=$wikiService->getWikiById($id);
+            
+        
+    //         print_r($wiki) ;
+    //         $wikiService->update($wiki);
+    //         echo"here";
+    //         header('location: edit-wiki');
+    //     }
+
+
+
     // }
 
-    public function listwiki(){
+
+     // editing wikis
+
+    //  public function viewEdit(){
+    //     if (isset($_GET['id'])){
+           
+    //         $id=$_GET['id'];
+    //         $wikiService=new WikiServices();
+    //         $wiki=$wikiService->getWikiById($id);
+    //         require_once "../../views/admin/edit-wiki.php";
+            
+      
+    //     }
+    // }
+
+    public function editStatus(){
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+            $id=$_POST['id'];
+            $wikiService=new WikiServices();
+            $wikiService->updateStatus($id,$_POST["status"]);
+            header("Location: dashboard");
+            exit;
+        }
+
+
+    }
+    
+
+
+ 
+
+    // listing the wikis details
+
+    public function listDetails(){
         if (isset($_GET['id'])){
             $id=$_GET['id'];
             $wikiService=new WikiServices();
@@ -83,4 +135,19 @@ class WikiController{
             require_once "../../views/user/wikidetails.php";
     }
 }
+
+    // listing the wikis for the admin
+
+    public function listWikis(){ 
+        $wikiService = new WikiServices();
+        $wikis = $wikiService->getAllWikis();
+        require_once '../../views/admin/dashboard.php';
+       
+
+
+    }
+
+
+
+
 }    

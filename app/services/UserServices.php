@@ -69,6 +69,15 @@ class UserServices implements UserDao{
         echo'cc';
     }
 
+
+    public function getAllUsers(){
+        $sql ="SELECT users.id as id,users.name as name,users.email as email, users.password as password, users.role_id as role_id, roles.name as role FROM users JOIN roles ON users.role_id = roles.id";
+        $stmt=$this->database->prepare($sql);
+        $stmt->execute();
+
+        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $wiki;
+    }
     
 
 
