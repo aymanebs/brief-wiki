@@ -94,12 +94,12 @@ class WikiServices implements WikiDao{
     }
 
     public function getWikiById($id){
-        $sql ="SELECT * FROM  wikis WHERE id=:id";
+        $sql ="SELECT wikis.id as id, wikis.title as title,wikis.content as content,wikis.imagePath as imagePath,wikis.status as status,wikis.category_id as category_id,wikis.user_id as user_id,wikis.submissionDate as submissionDate,categories.title as category,users.name as author  FROM  wikis JOIN categories ON wikis.category_id = categories.id JOIN users ON users.id=wikis.user_id  WHERE wikis.id=:id";
         $stmt=$this->database->prepare($sql);
         $stmt->bindParam(':id',$id,PDO::PARAM_INT);
         $stmt->execute();
 
-        $wiki=$stmt->fetch(PDO::FETCH_ASSOC);
+        $wiki=$stmt->fetchAll(PDO::FETCH_ASSOC);
         return $wiki;
     }
 
@@ -113,7 +113,7 @@ class WikiServices implements WikiDao{
     }
 
     public function getDisplayWikis(){
-        $sql ="SELECT * FROM  wikis WHERE status=1";
+        $sql ="SELECT wikis.id as id, wikis.title as title,wikis.content as content,wikis.imagePath as imagePath,wikis.status as status,wikis.category_id as category_id,wikis.user_id as user_id,wikis.submissionDate as submissionDate,categories.title as category,users.name as author  FROM  wikis JOIN categories ON wikis.category_id = categories.id JOIN users ON users.id=wikis.user_id  WHERE wikis.status=1";
         $stmt=$this->database->prepare($sql);
         $stmt->execute();
 
@@ -129,19 +129,20 @@ class WikiServices implements WikiDao{
         return $count;
 
         }
-    // public function updateStatus($wiki){
-    //     $sql="UPDATE wikis SET  status=:status  WHERE id=:id";
-    //     $stmt=$this->database->prepare($sql);
+
+
+        public function searchWikis($query)
+        {
+            $sql ="SELECT wikis.id as id, wikis.title as title, wikis.content as content, wikis.imagePath as imagePath, wikis.status as status, wikis.category_id as category_id, wikis.user_id as user_id, wikis.submissionDate as submissionDate, categories.title as category, users.name as author  FROM  wikis JOIN categories ON wikis.category_id = categories.id JOIN users ON users.id=wikis.user_id  WHERE wikis.status=1 AND (wikis.title LIKE :query OR wikis.content LIKE :query)";
+            
+            $stmt = $this->database->prepare($sql);
+            $stmt->execute(['query' => "%$query%"]);
         
-    //     $id=$wiki->getId();
-    //     $status=$wiki->getStatus();
-        
-    //     $stmt->bindParam(':status',$status,PDO::PARAM_BOOL);
-    //     $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+            $wikis = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $wikis;
+        }
+  
+
       
-    //     $stmt->execute();
-
-
-    // }
 
 }

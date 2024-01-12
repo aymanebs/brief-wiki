@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,163 +13,208 @@
    <!-- custom css file link  -->
    <link rel="stylesheet" href="/brief-wiki/app/routes/../../public/css/style.css" />
 
-   
+
 
 
 </head>
+
 <body>
-   
-<!-- header section starts  -->
 
-<header class="header">
 
-   <nav class="navbar nav-1">
-      <section class="flex">
-         <a href="" class="logo"><i class="fa fa-wikipedia-w"></i>Wiki</a>
 
-         <ul>
-            <li><a href="wikinsert">Add wiki<i class="fas fa-paper-plane"></i></a></li>
-         </ul>
-      </section>
-   </nav>
+   <!-- header section starts  -->
 
-   <nav class="navbar nav-2">
-      <section class="flex">
-         <div id="menu-btn" class="fas fa-bars"></div>
+   <header class="header">
 
-         <div class="menu">
+      <nav class="navbar nav-1">
+         <section class="flex">
+            <a href="" class="logo"><i class="fa fa-wikipedia-w"></i>Wiki</a>
+
             <ul>
-               <li><a href="#">buy<i class="fas fa-angle-down"></i></a>
+               <li><a href="wikinsert">Add wiki<i class="fas fa-paper-plane"></i></a></li>
+            </ul>
+         </section>
+      </nav>
+
+      <nav class="navbar nav-2">
+         <section class="flex">
+            <div id="menu-btn" class="fas fa-bars"></div>
+
+            <div class="menu">
+               <ul>
+                  <li><a href="#">buy<i class="fas fa-angle-down"></i></a>
+                     <ul>
+                        <li><a href="#">house</a></li>
+                        <li><a href="#">flat</a></li>
+                        <li><a href="#">shop</a></li>
+                        <li><a href="#">ready to move</a></li>
+                        <li><a href="#">furnished</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
+                     <ul>
+                        <li><a href="#">post property</a></li>
+                        <li><a href="#">dashboard</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">rent</a>
+                     <ul>
+                        <li><a href="#">house</a></li>
+                        <li><a href="#">flat</a></li>
+                        <li><a href="#">shop</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">help<i class="fas fa-angle-down"></i></a>
+                     <ul>
+                        <li><a href="about.html">about us</a></i></li>
+                        <li><a href="contact.html">contact us</a></i></li>
+                        <li><a href="contact.html#faq">FAQ</a></i></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+
+            <ul>
+               <li><a href="#">saved <i class="far fa-heart"></i></a></li>
+               <li><a href="#">account <i class="fas fa-angle-down"></i></a>
                   <ul>
-                     <li><a href="#">house</a></li>
-                     <li><a href="#">flat</a></li>
-                     <li><a href="#">shop</a></li>
-                     <li><a href="#">ready to move</a></li>
-                     <li><a href="#">furnished</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="#">post property</a></li>
-                     <li><a href="#">dashboard</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">rent</a>
-                  <ul>
-                     <li><a href="#">house</a></li>
-                     <li><a href="#">flat</a></li>
-                     <li><a href="#">shop</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">help<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="about.html">about us</a></i></li>
-                     <li><a href="contact.html">contact us</a></i></li>
-                     <li><a href="contact.html#faq">FAQ</a></i></li>
+                     <li><a href="login">login</a></li>
+                     <li><a href="register.html">register</a></li>
+                     <li><a href="logout">logout</a></li>
                   </ul>
                </li>
             </ul>
-         </div>
 
-         <ul>
-            <li><a href="#">saved <i class="far fa-heart"></i></a></li>
-            <li><a href="#">account <i class="fas fa-angle-down"></i></a>
-               <ul>
-                  <li><a href="login">login</a></li>
-                  <li><a href="register.html">register</a></li>
-                  <li><a href="logout">logout</a></li>
-               </ul>
-            </li>
-         </ul>
-      </section>
-   </nav>
+         </section>
+      </nav>
 
-</header>
+   </header>
 
-<!-- header section ends -->
+   <!-- Add this code at the beginning of the body tag -->
+   <form id="searchForm" class="search-form">
+      <input type="text" id="query" placeholder="Search for a wiki">
+      <button type="button" onclick="searchWikis()">Search</button>
+   </form>
 
-<!-- listings section starts  -->
+   <!-- header section ends -->
 
-<section class="listings">
+   <!-- listings section starts  -->
 
-   <h1 class="heading">All wikis</h1>
+   <section class="listings">
 
-   <div class="box-container">
+      <h1 class="heading">All wikis</h1>
 
-    <!-- wiki card -->
+      <div class="box-container" id="wikisContainer">
+
+         <!-- wiki card -->
 
 
-    <?php
+         <?php
 
-  
-   foreach ($wikis as $wiki) { ?>
 
-      <div class="box">
-         <div class="admin">
-            <div>
-               <span> Created: <?php echo $wiki['submissionDate'] ?></span>
+         foreach ($wikis as $wiki) { ?>
+
+
+            <div class="box">
+               <div class="admin">
+                  <div>
+                     <span> Created: <?php echo $wiki['submissionDate'] ?></span>
+                  </div>
+               </div>
+               <div class="thumb">
+
+                  <img src="/brief-wiki/app/routes/../../public/upload/<?php echo $wiki['imagePath'] ?>" alt="Image Alt Text">
+               </div>
+               <h3 class="name"><?php echo $wiki['title'] ?></h3>
+               <a href="wikidetails?id=<?php echo $wiki['id']; ?>" class="btn">Read more</a>
+               <div class="admin">
+                  <div>
+                     <span> Category: <?php echo $wiki['category'] ?></span>
+                  </div>
+               </div>
+
+
             </div>
-         </div>
-         <div class="thumb">
-         
-            <img src="/brief-wiki/app/routes/../../public/upload/<?php echo $wiki['imagePath'] ?>"  alt="Image Alt Text">
-         </div>
-         <h3 class="name"><?php echo $wiki['title'] ?></h3> 
-         <a href="wikidetails?id=<?php echo $wiki['id']; ?>" class="btn">Read more</a>
-      </div>
-    
 
-      <?php } ?>
+
+         <?php } ?>
 
 
 
-
-   </div>
-
-</section>
-
-<!-- listings section ends -->
-
-
-
-<!-- footer section starts  -->
-
-<footer class="footer">
-
-   <section class="flex">
-
-      <div class="box">
-         <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
-         <a href="tel:1112223333"><i class="fas fa-phone"></i><span>1112223333</span></a>
-         
-      </div>
-
-      <div class="box">
-         <a href="home.html"><span>home</span></a>
-         <a href="about.html"><span>about</span></a>
-        
-        
-      </div>
-
-      <div class="box">
-         <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-         <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
-        
 
       </div>
 
    </section>
 
-   
-
-</footer>
-
-<!-- footer section ends -->
+   <!-- listings section ends -->
 
 
-<!-- custom js file link  -->
-<script src="https://kit.fontawesome.com/b93ca603ed.js" crossorigin="anonymous"></script>
-<script src="js/script.js"></script>
+
+   <!-- footer section starts  -->
+
+   <footer class="footer">
+
+      <section class="flex">
+
+         <div class="box">
+            <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
+            <a href="tel:1112223333"><i class="fas fa-phone"></i><span>1112223333</span></a>
+
+         </div>
+
+         <div class="box">
+            <a href="home.html"><span>home</span></a>
+            <a href="about.html"><span>about</span></a>
+
+
+         </div>
+
+         <div class="box">
+            <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
+
+
+         </div>
+
+      </section>
+
+
+
+   </footer>
+
+   <!-- footer section ends -->
+
+   <script>
+      function searchWikis() {
+         var query = document.getElementById('query').value;
+
+         // Create an XMLHttpRequest object
+         var xhr = new XMLHttpRequest();
+
+         // Set up the request
+         xhr.open('GET', 'http://localhost/brief-wiki/index/?query=' + encodeURIComponent(query), true);
+
+
+         // Define the callback function
+         xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+               // Update the content of the container with the fetched wikis
+               document.getElementById('wikisContainer').innerHTML = xhr.responseText;
+            }
+         };
+
+         // Send the request
+         xhr.send();
+
+         console.log(xhr.send());
+      }
+   </script>
+
+
+   <!-- custom js file link  -->
+   <script src="https://kit.fontawesome.com/b93ca603ed.js" crossorigin="anonymous"></script>
+   <script src="js/script.js"></script>
 
 </body>
+
 </html>

@@ -88,7 +88,7 @@
 
 
 <!-- article section starts  -->
-<section class="details">
+<section id="wiki-details">
 
 
 <?php
@@ -98,6 +98,8 @@
 
    foreach ($wikis as $wiki) { ?>
    <!-- Article Title -->
+   <?php echo "Author" . $wiki['author'] ?>
+
 <h1 style="padding: 20px;"><?php echo $wiki['title']?></h1>
 
       <!-- Article Image -->

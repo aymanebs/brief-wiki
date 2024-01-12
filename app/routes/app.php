@@ -16,8 +16,23 @@ $router->setRoutes([
         "catinsert" => ["CategoryController", "viewInsert"],
         "taginsert" => ["TagController", "viewInsert"],
         "wikinsert" => ["WikiController", "viewInsert"],
-        "index" => ["WikiController", "viewList"],
+
+
+
+
+        // "index" => ["WikiController", "viewList"],
+
+        "index" => ["WikiController", "search"],
+
+
+
+
+
         "dashboard" => ["HomeController", "viewDashboard"],
+
+
+
+
 
         'deleteWiki'=>['WikiController' , 'delete'],
         'deleteUser'=>['UserController' , 'delete'],
@@ -27,9 +42,6 @@ $router->setRoutes([
         'edit'=>['WikiController' , 'edit'],
 
         'edit-wiki'=>['WikiController' , 'edit'],
-
-        // 'edit-wiki'=>['WikiController' , 'viewEdit'], /////
-        // 'edit-category'=>['CategoryController' , 'viewEdit'], /////
         
         
         "wikidetails" => ["WikiController", "listDetails"],

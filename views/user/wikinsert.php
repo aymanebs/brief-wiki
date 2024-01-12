@@ -104,7 +104,7 @@
          ?>
          </select> 
          <label  style="font-size: 1.5em;">Select tag</label>
-         <select name="tag_id" class="box">
+         <select name="tag_id" class="box" multiple>>
          <?php
 
       
