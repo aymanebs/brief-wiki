@@ -47,7 +47,7 @@
 
         registrationForm.addEventListener('submit', function (event) {
             if (!validateForm()) {
-                event.preventDefault(); // Prevent form submission if validation fails
+                event.preventDefault(); 
             }
         });
 
@@ -72,7 +72,7 @@
             passwordError.textContent = '';
             confirmPasswordError.textContent = '';
 
-            // Basic validation (you can add more specific validation)
+           
             if (name === '' ) {
               nameError.textContent = 'Name is required.';
               return false;
@@ -107,7 +107,7 @@
                 confirmPasswordError.textContent = 'Passwords do not match.';
                 return false;
             }
-            // Additional validation (e.g., email format, password length) can be added here
+           
 
             if (password !== confirmPassword) {
                 alert('Password and Confirm Password must match.');

@@ -66,7 +66,7 @@ class WikiController
         require_once  "../../index.php";
     }
 
-// search and list wikis
+//  list wikis
 
 
     public function  index()
@@ -76,7 +76,7 @@ class WikiController
         require_once  "../../index.php";
     }
 
-
+// search wikis
 
     public function  search()
     {
@@ -86,11 +86,6 @@ class WikiController
         
         echo json_encode($wikis);
     }
-
-
-
-
-
 
 
 
@@ -107,40 +102,6 @@ class WikiController
     }
 
 
-    // public function viewEdit()
-    // {
-
-    //     if (isset($_GET['id'])){
-
-    //         $id=$_GET['id'];
-    //         $wikiService=new WikiServices();
-    //         $wiki=$wikiService->getWikiById($id);
-
-
-    //         print_r($wiki) ;
-    //         $wikiService->update($wiki);
-    //         echo"here";
-    //         header('location: edit-wiki');
-    //     }
-
-
-
-    // }
-
-
-    // editing wikis
-
-    //  public function viewEdit(){
-    //     if (isset($_GET['id'])){
-
-    //         $id=$_GET['id'];
-    //         $wikiService=new WikiServices();
-    //         $wiki=$wikiService->getWikiById($id);
-    //         require_once "../../views/admin/edit-wiki.php";
-
-
-    //     }
-    // }
 
     public function editStatus()
     {
@@ -179,13 +140,7 @@ class WikiController
         require_once '../../views/admin/dashboard.php';
     }
 
-    // public function countWikis(){
-    //     $wikiService = new WikiServices();
-    //     $count =$wikiService->count();
-    //     require_once '../../views/admin/dashboard.php';
-
-
-    // }
+   
 
 
 

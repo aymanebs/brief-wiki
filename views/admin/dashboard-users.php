@@ -52,22 +52,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-<!-- 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle  fw-bold" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div> -->
+
             </nav>
 
             <div class="container-fluid px-4">
@@ -145,7 +130,7 @@
                                     <a href="#editUserModal<?php echo $user['id']; ?>" class="editUser" data-id="<?php echo $user['id'] ?>" data-status="<?php echo $user['role']; ?>" data-toggle="modal">
                                 <i class='fas fa-edit btndit' style='cursor: pointer;'></i></a>
             <a href='deleteUser?id=<?php echo $user['id']?>'><i class='fas fa-trash-alt btndelete' style='cursor: pointer; padding-left: 20px;'></i></a>
-            <!-- <a href="Delete?user_id=${row.id}" class="btn btn-danger">Delete</a> -->
+           
         </td>
                                 </tr>
 
