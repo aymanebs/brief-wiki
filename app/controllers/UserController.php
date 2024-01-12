@@ -25,6 +25,8 @@ class UserController
             $user = new User($name, $email, $password);
             $userServices = new UserServices();
             $test = $userServices->create($user);
+            header('Location:login');
+
         }
     }
 

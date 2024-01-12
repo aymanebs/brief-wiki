@@ -22,7 +22,8 @@ $router->setRoutes([
 
         // "index" => ["WikiController", "viewList"],
 
-        "index" => ["WikiController", "search"],
+        "index" => ["WikiController", "index"],
+        "search" => ["WikiController", "search"],
 
 
 

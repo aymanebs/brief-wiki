@@ -21,7 +21,7 @@
 
    <nav class="navbar nav-1">
       <section class="flex">
-      <a href="" class="logo"><i class="fa fa-wikipedia-w"></i>Wiki</a>
+      <a href="index" class="logo"><i class="fa fa-wikipedia-w"></i>Wiki</a>
 
          <ul>
             <li><a href="#">Add wiki<i class="fas fa-paper-plane"></i></a></li>
@@ -34,45 +34,22 @@
          <div id="menu-btn" class="fas fa-bars"></div>
 
          <div class="menu">
+               <ul>
+                  
+                  
+          
+               </ul>
+            </div>
+
             <ul>
-               <li><a href="#">buy<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="#">house</a></li>
-                     <li><a href="#">flat</a></li>
-                     <li><a href="#">shop</a></li>
-                     <li><a href="#">ready to move</a></li>
-                     <li><a href="#">furnished</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="#">Add wiki</a></li>
-                     <li><a href="#">dashboard</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">rent</a>
-                  <ul>
-                     <li><a href="#">house</a></li>
-                     <li><a href="#">flat</a></li>
-                     <li><a href="#">shop</a></li>
-                  </ul>
-               </li>
-               <li><a href="#">help<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="about.html">about us</a></i></li>
-                     <li><a href="contact.html">contact us</a></i></li>
-                     <li><a href="contact.html#faq">FAQ</a></i></li>
-                  </ul>
-               </li>
-            </ul>
-         </div>
+               <li></li>
 
          <ul>
-            <li><a href="#">saved <i class="far fa-heart"></i></a></li>
+            
             <li><a href="#">account <i class="fas fa-angle-down"></i></a>
                <ul>
-                  <li><a href="login.html">login</a></li>
-                  <li><a href="register.html">register</a></li>
+                 
+                  <li><a href="logout">logout</a></li>
                </ul>
             </li>
          </ul>
@@ -146,35 +123,28 @@
    <section class="flex">
 
       <div class="box">
-         <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
-         <a href="tel:1112223333"><i class="fas fa-phone"></i><span>1112223333</span></a>
-         <a href="mailto:shaikhanas@gmail.com"><i class="fas fa-envelope"></i><span>shaikhanas@gmail.com</span></a>
-         <a href="#"><i class="fas fa-map-marker-alt"></i><span>mumbai, india - 400104</span></a>
+         <a href=""><i class="fas fa-envelope"></i><span>@gmail.com</span></a>
+         <a href="#"><i class="fas fa-map-marker-alt"></i><span> Local- 400104</span></a>
       </div>
 
       <div class="box">
-         <a href="home.html"><span>home</span></a>
+         <a href="index"><span>home</span></a>
          <a href="about.html"><span>about</span></a>
-         <a href="contact.html"><span>contact</span></a>
-         <a href="listings.html"><span>all listings</span></a>
-         <a href="#"><span>saved properties</span></a>
+        
       </div>
 
       <div class="box">
          <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
          <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
-         <a href="#"><span>linkedin</span><i class="fab fa-linkedin"></i></a>
-         <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
+       
 
       </div>
 
    </section>
 
-   <div class="credit">&copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!</div>
+   
 
 </footer>
-
-<!-- footer section ends -->
 
 <script src="https://kit.fontawesome.com/b93ca603ed.js" crossorigin="anonymous"></script>
 <!-- custom js file link  -->

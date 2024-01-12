@@ -33,6 +33,8 @@ class WikiController
             $wiki = new Wiki(null, $title, $content, $imagePath, $status, $category_id, $user_id);
             $wikiServices = new WikiServices();
             $wikiServices->create($wiki, $tagId);
+            header('location: index');
+
         }
     }
 
@@ -64,18 +66,26 @@ class WikiController
         require_once  "../../index.php";
     }
 
+// search and list wikis
+
+
+    public function  index()
+    {
+        $wikiService = new WikiServices();
+        $wikis = $wikiService->getDisplayWikis();
+        require_once  "../../index.php";
+    }
+
+
 
     public function  search()
     {
         $query = isset($_GET['query']) ? $_GET['query'] : '';
         $wikiService = new WikiServices();
         $wikis = $wikiService->searchWikis($query);
-        require_once  "../../index.php";
+        
+        echo json_encode($wikis);
     }
-
-
-
-
 
 
 
